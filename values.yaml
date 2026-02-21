@@ -1,0 +1,38 @@
+wordpressUsername: safaa
+wordpressPassword: user!123@
+wordpressEmail: khalifah.safaa9khalifah@yahoo.com
+wordpressBlogName: Kubernetes WordPress 
+
+service:
+  type: ClusterIP
+
+persistence:
+  enabled: true
+  size: 10Gi
+
+mariadb:
+  enabled: true
+  auth:
+    rootPassword: root123
+    database: wordpress
+    username: wpuser
+    password: w@123
+  primary:
+    persistence:
+      enabled: true
+      size: 10Gi
+
+ingress:
+  enabled: true
+  ingressClassName: nginx
+  hostname: 192.168.49.2.nip.io
+  path: /
+  pathType: Prefix
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
